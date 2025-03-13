@@ -8,7 +8,7 @@ sys.dont_write_bytecode = True  # Prevent __pycache__ creation
 def load_static_to_public():
     """Dynamically load static_to_public.py from the public directory."""
     script_dir = os.path.dirname(os.path.abspath(__file__))  # `src/` directory
-    public_dir = os.path.abspath(os.path.join(script_dir, "..", "public"))  # `public/` at project root
+    public_dir = os.path.abspath(os.path.join(script_dir, ".."))  # ✅ Fix: Move up one level to `public/`
     static_to_public_path = os.path.join(public_dir, "static_to_public.py")
 
     print(f"\nSCRIPT DIR: {script_dir}")  # Debugging
