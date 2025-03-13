@@ -7,7 +7,7 @@ def copy_static_to_public():
     # Define correct paths
     script_dir = os.path.dirname(os.path.abspath(__file__))  # `src/` directory
     static_dir = os.path.abspath(os.path.join(script_dir, "..", "static"))  # `static/` at project root
-    public_dir = os.path.abspath(os.path.join(script_dir, ".."))  # `public/` at project root
+    public_dir = os.path.abspath(script_dir)  # `public/` at project root
 
     # Ensure `static/` exists
     if not os.path.exists(static_dir):
