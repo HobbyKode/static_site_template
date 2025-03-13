@@ -1,5 +1,13 @@
 from textnode import TextNode, TextType
+import sys
+import os
+
+# Add the public/ directory to the Python import path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+# Now import the module
 from static_to_public import copy_static_to_public
+
 
 def main():
     print("\n🚀 Running Static Site Generator...\n")
