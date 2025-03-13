@@ -7,7 +7,7 @@ script_dir=$(dirname "$(realpath "$0")")
 src_dir="$script_dir/src"
 
 # Run the Python script inside public/src/
-python3 "$src_dir/main.py"
+python3 -B "$src_dir/main.py"
 
 # Debugging output
 echo "SCRIPT DIR: $script_dir"
