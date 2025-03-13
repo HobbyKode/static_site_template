@@ -1,41 +1,24 @@
 import os
-import importlib.util
-import sys
-from textnode import TextNode, TextType
+import shutil
 
-sys.dont_write_bytecode = True  # Prevent __pycache__ creation
+from static_to_public import copy_files_recursive
 
-def load_static_to_public():
-    """Dynamically load static_to_public.py from the public directory."""
-    script_dir = os.path.dirname(os.path.abspath(__file__))  # `src/` directory
-    public_dir = os.path.abspath(os.path.join(script_dir, ".."))  # The `public/` directory above `src/`
-    static_to_public_path = os.path.join(public_dir, "static_to_public.py")
+dir_path_static = "./static"
+dir_path_public = "./public"
 
-    print(f"\nSCRIPT DIR: {script_dir}")  # Debugging
-    print(f"PUBLIC DIR: {public_dir}")  # Debugging
 
-    if not os.path.exists(static_to_public_path):
-        print(f"\n❌ Error: 'static_to_public.py' not found at {static_to_public_path}!\n")
-        return None
 
-    spec = importlib.util.spec_from_file_location("static_to_public", static_to_public_path)
-    static_to_public = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(static_to_public)
-    return static_to_public
 
 def main():
-    print("\n🚀 Running Static Site Generator...\n")
 
-    # Step 1: Load and execute `copy_static_to_public()`
-    static_to_public = load_static_to_public()
-    if static_to_public:
-        static_to_public.copy_static_to_public()
+    # Step 1: Load and execute `copy_files_recursive()`
+    print("Deleting public directory...")
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
+        
+    print("Copying static files to public directory...")
+    copy_files_recursive(dir_path_static, dir_path_public)
 
-    # Step 2: Debugging Example - Create and Print a TextNode
-    node = TextNode("This is a text node", TextType.BOLD, "https://www.boot.dev")
-    print(node)
+    
 
-    print("\n✅ Static site successfully built!\n")
-
-if __name__ == "__main__":
-    main()
+main()
