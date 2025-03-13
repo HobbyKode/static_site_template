@@ -2,8 +2,11 @@ import os
 import sys
 import shutil
 
+sys.dont_write_bytecode = True  # Prevent __pycache__ creation
+
 # Ensure Python can find `static_to_public.py`
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 from static_to_public import copy_files_recursive
 
@@ -27,6 +30,7 @@ def main():
 
     print("\n✅ Copying static files to public directory...\n")
     copy_files_recursive(dir_path_static, dir_path_public)
+    print("\n✅ Done!~\n")
 
 main()
 
