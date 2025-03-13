@@ -20,6 +20,10 @@ def copy_static_to_public():
         os.mkdir(public_dir)
         print(f"Created public directory: {public_dir}")
 
+    # Safety check to ensure we're targeting the expected folder
+    if not public_dir.endswith("public") or "public/" in os.path.relpath(public_dir, script_dir):
+        raise ValueError(f"Unsafe operation: `public_dir` is misconfigured to {public_dir}")
+
     # Step 1: Delete existing contents of `public/`, but not `public/` itself
     for item in os.listdir(public_dir):
         item_path = os.path.join(public_dir, item)
