@@ -21,9 +21,15 @@ def copy_static_to_public():
     # Safety check to ensure we're targeting the expected folder
     assert public_dir.endswith("public"), f"Suspicious `public_dir` path: {public_dir}"
 
-    # Step 1: Delete existing contents of `public/`, but not `public/` itself
+    # Step 1: Delete all but `src`
     for item in os.listdir(public_dir):
         item_path = os.path.join(public_dir, item)
+
+        # Skip the `src` directory
+        if os.path.basename(item_path) == "src":
+            print(f"Skipping directory: {item_path}")
+            continue
+
 
         if os.path.isdir(item_path):
             shutil.rmtree(item_path)  # Remove directories
@@ -36,6 +42,7 @@ def copy_static_to_public():
     for item in os.listdir(static_dir):
         src_path = os.path.join(static_dir, item)
         dest_path = os.path.join(public_dir, item)
+
 
         if os.path.isfile(src_path):
             shutil.copy(src_path, dest_path)  # Copy files
