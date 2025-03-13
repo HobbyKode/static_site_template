@@ -1,14 +1,21 @@
 import os
 import importlib.util
+import sys
 from textnode import TextNode, TextType
 
+sys.dont_write_bytecode = True  # Prevent __pycache__ creation
+
 def load_static_to_public():
-    """Dynamically load static_to_public.py since it's outside of src/."""
+    """Dynamically load static_to_public.py from the public directory."""
     script_dir = os.path.dirname(os.path.abspath(__file__))  # `src/` directory
-    static_to_public_path = os.path.abspath(os.path.join(script_dir, "..", "public", "static_to_public.py"))
+    public_dir = os.path.abspath(os.path.join(script_dir, "..", "public"))  # `public/` at project root
+    static_to_public_path = os.path.join(public_dir, "static_to_public.py")
+
+    print(f"\nSCRIPT DIR: {script_dir}")  # Debugging
+    print(f"PUBLIC DIR: {public_dir}")  # Debugging
 
     if not os.path.exists(static_to_public_path):
-        print("\n❌ Error: 'static_to_public.py' not found!\n")
+        print(f"\n❌ Error: 'static_to_public.py' not found at {static_to_public_path}!\n")
         return None
 
     spec = importlib.util.spec_from_file_location("static_to_public", static_to_public_path)
