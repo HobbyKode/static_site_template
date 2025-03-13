@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# Get the absolute path to the directory containing this script
+# Get the absolute directory of the script
 script_dir=$(dirname "$(realpath "$0")")
 
-# Navigate to the project root (adjust based on your structure)
-project_root=$(realpath "$script_dir/..")
+# Calculate the absolute path to the src directory (adjusted to public/src/)
+src_dir=$(realpath "$script_dir/src")
 
-# Run the Python script from src/main.py
-python3 "$project_root/src/main.py"
+# Run the Python script within public/src/
+python3 "$src_dir/main.py"
+
+# Debugging output
+echo "SCRIPT DIR: $script_dir"
+echo "SRC DIR: $src_dir"
 
 
