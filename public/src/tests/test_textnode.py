@@ -1,6 +1,8 @@
-import unittest
+import sys
+sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
-from src.textnode import TextNode, TextType, text_node_to_html_node
+import unittest
+from public.src.textnode import TextNode, TextType, text_node_to_html_node
 
 
 class TestTextNode(unittest.TestCase):

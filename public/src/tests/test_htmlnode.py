@@ -1,6 +1,8 @@
-import unittest
-from src.htmlnode import LeafNode, ParentNode, HTMLNode
+import sys
+sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
+import unittest
+from public.src.htmlnode import LeafNode, ParentNode, HTMLNode
 
 class TestHTMLNode(unittest.TestCase):
     def test_to_html_props(self):

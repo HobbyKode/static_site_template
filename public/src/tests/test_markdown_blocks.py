@@ -1,5 +1,8 @@
+import sys
+sys.dont_write_bytecode = True  # Prevents __pycache__ creation
+
 import unittest
-from src.markdown_blocks import (
+from public.src.markdown_blocks import (
     markdown_to_html_node,
     markdown_to_blocks,
     block_to_block_type,
