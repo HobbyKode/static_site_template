@@ -1,6 +1,6 @@
 import os
-from src.markdown_blocks import markdown_to_html_node
-from src.page_generator import extract_title  # ✅ Ensure correct import
+from markdown_blocks import markdown_to_html_node
+from page_generator import extract_title  # ✅ Ensure correct import
 
 
 
