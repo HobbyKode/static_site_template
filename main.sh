@@ -12,3 +12,6 @@ export PYTHONDONTWRITEBYTECODE=1
 # Run the main script
 python3 "$main_script"
 
+#Start the web server
+cd public && python3 -m http.server 8888
+
