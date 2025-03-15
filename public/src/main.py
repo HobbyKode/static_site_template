@@ -1,14 +1,15 @@
 import sys
 import os
 import shutil
-from page_generator import generate_page
+from page_generator import generate_pages_recursive
+from static_to_public import copy_files_recursive
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
 # Ensure Python can find `static_to_public.py`
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from static_to_public import copy_files_recursive
+
 
 # Paths based on your project structure
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -36,20 +37,16 @@ def main():
     print("\n✅ Copying static files to public directory...\n")
     copy_files_recursive(dir_path_static, dir_path_public)
 
-    # Generate index.html from content/index.md
-    print("\n📝 Generating index.html from content/index.md...\n")
-    index_md_path = os.path.join(content_dir, "index.md")  # Path to index.md
-    index_html_path = os.path.join(dir_path_public, "index.html")  # Path to index.html
+    # Generate HTML files from Markdown in content directory
+    print("\n📝 Generating HTML files from Markdown in content...\n")
 
-    if os.path.exists(index_md_path):
-        generate_page(index_md_path, template_path, index_html_path)
-        print(f"✅ Successfully generated: {index_html_path}")
+    if os.path.exists(content_dir):
+        generate_pages_recursive(content_dir, template_path, dir_path_public)  # ✅ Fixed function call
+        print(f"✅ Successfully generated all pages in {dir_path_public}")
     else:
-        print("❌ Error: No index.md found in content/")
+        print("❌ Error: No content directory found!")
 
     print("\n✅ Done!~\n")
-
-main()
 
 main()
 
