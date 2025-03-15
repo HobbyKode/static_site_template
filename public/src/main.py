@@ -43,7 +43,7 @@ def main():
     print("\n📝 Generating HTML files from Markdown in content...\n")
 
     if os.path.exists(content_dir):
-        generate_pages_recursive(content_dir, template_path, dir_path_public)  # ✅ Fixed function call
+        generate_pages_recursive(content_dir, template_path, dir_path_public) 
         print(f"✅ Successfully generated all pages in {dir_path_public}")
     else:
         print("❌ Error: No content directory found!")
