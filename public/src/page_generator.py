@@ -24,12 +24,6 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
 
     print("\n✅ All pages successfully generated!\n")
 
-def extract_title(md):
-    lines = md.split("\n")
-    for line in lines:
-        if line.startswith("# "):
-            return line[2:]
-    raise ValueError("no title found")
 
 def generate_page(from_path, template_path, dest_path):
     """Generates an HTML page from a markdown file using a template."""
@@ -60,6 +54,14 @@ def generate_page(from_path, template_path, dest_path):
         f.write(final_html)
 
     print(f"✅ Successfully generated: {dest_path}")
+
+
+def extract_title(md):
+    lines = md.split("\n")
+    for line in lines:
+        if line.startswith("# "):
+            return line[2:]
+    raise ValueError("no title found")
 
 
 

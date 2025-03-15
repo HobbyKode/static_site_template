@@ -4,6 +4,8 @@ import shutil
 from page_generator import generate_pages_recursive
 from static_to_public import copy_files_recursive
 
+basepath = sys.argv
+
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
 # Ensure Python can find `static_to_public.py`
