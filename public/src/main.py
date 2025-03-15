@@ -4,7 +4,8 @@ import shutil
 from page_generator import generate_pages_recursive
 from static_to_public import copy_files_recursive
 
-basepath = sys.argv
+# Get basepath as first CLI argument, default to "/"
+basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
@@ -43,7 +44,7 @@ def main():
     print("\n📝 Generating HTML files from Markdown in content...\n")
 
     if os.path.exists(content_dir):
-        generate_pages_recursive(content_dir, template_path, dir_path_public) 
+        generate_pages_recursive(content_dir, template_path, dir_path_public, basepath) 
         print(f"✅ Successfully generated all pages in {dir_path_public}")
     else:
         print("❌ Error: No content directory found!")

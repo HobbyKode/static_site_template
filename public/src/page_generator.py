@@ -1,7 +1,7 @@
 import os
 from markdown_blocks import markdown_to_html_node
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
     """Recursively generates HTML pages from markdown files in content/."""
     print(f"\n📝 Scanning content directory: {dir_path_content}")
 
@@ -15,17 +15,17 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
 
         if os.path.isdir(entry_path):
             # If entry is a directory, recurse into it
-            generate_pages_recursive(entry_path, template_path, dest_path)
+            generate_pages_recursive(entry_path, template_path, dest_path, basepath)
 
         elif entry.endswith(".md"):
             # Convert markdown to HTML and replace `.md` with `.html`
             dest_html_path = dest_path.replace(".md", ".html")
-            generate_page(entry_path, template_path, dest_html_path)
+            generate_page(entry_path, template_path, dest_html_path, basepath)
 
     print("\n✅ All pages successfully generated!\n")
 
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     """Generates an HTML page from a markdown file using a template."""
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
@@ -45,6 +45,10 @@ def generate_page(from_path, template_path, dest_path):
 
     # Step 5: Replace placeholders in the template
     final_html = template_content.replace("{{ Title }}", title).replace("{{ Content }}", html_body)
+
+    final_html.replace('href="/', f'href="{basepath}')
+    final_html.replace('src="/', f'src="{basepath}')
+
 
     # Step 6: Ensure destination directories exist
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
