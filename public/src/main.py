@@ -26,6 +26,7 @@ def main():
     print(f"STATIC DIR: {dir_path_static}")
     print(f"PUBLIC DIR: {dir_path_public}")
     print(f"CONTENT DIR: {content_dir}")
+    print(f"BASEPATH: {basepath}")  # ✅ Debugging output
 
     print("\n🚀 Deleting contents of the public directory...\n")
     if os.path.exists(dir_path_public):
