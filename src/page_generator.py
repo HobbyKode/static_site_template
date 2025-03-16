@@ -51,7 +51,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
     
  
     # ✅ Fix basepath formatting (Ensure single `/`)
-    basepath = basepath.rstrip("/") + "/"  # Ensure a single trailing slash
+    basepath = basepath.rstrip("/")  # Ensure a single trailing slash
 
     # ✅ DEBUG: Print HTML before replacement
     print("Before basepath replacement:")
