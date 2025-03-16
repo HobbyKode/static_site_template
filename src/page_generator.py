@@ -60,6 +60,10 @@ def generate_page(from_path, template_path, dest_path, basepath):
     final_html = final_html.replace('href="/', f'href="{basepath}')
     final_html = final_html.replace('src="/', f'src="{basepath}')
 
+    # Add right after your replacements
+    print(f"DEBUG: Example link after replacement: {final_html.find('href=')}")
+    print(final_html[final_html.find('href='):final_html.find('href=')+40])
+
     print(f"Applying basepath (after formatting): '{basepath}'")  # ✅ Debugging
 
 
