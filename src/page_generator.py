@@ -55,8 +55,8 @@ def generate_page(from_path, template_path, dest_path, basepath):
     print(final_html[:500])  # Show first 500 characters for preview
     
     #Placeholders replacements for GitHub Pages basepath
-    final_html = final_html.replace('href="/', f'href="{basepath}/')
-    final_html = final_html.replace('src="/', f'src="{basepath}/')
+    final_html = final_html.replace('href="/', f'href="{basepath}')
+    final_html = final_html.replace('src="/', f'src="{basepath}')
 
 
     # Step 6: Ensure destination directories exist
