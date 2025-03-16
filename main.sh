@@ -4,7 +4,7 @@
 cd "$(dirname "$0")"
 
 # Define the correct path to `main.py` inside `src/`
-main_script="./src/main.py"
+main_script="src/main.py"
 
 # Disable bytecode compilation (no __pycache__)
 export PYTHONDONTWRITEBYTECODE=1
