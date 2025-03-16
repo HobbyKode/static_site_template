@@ -28,6 +28,7 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
 def generate_page(from_path, template_path, dest_path, basepath):
     """Generates an HTML page from a markdown file using a template."""
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
+    print(f"Applying basepath: {basepath}")  # ✅ Debugging output
 
     # Step 1: Read the markdown file
     with open(from_path, "r", encoding="utf-8") as f:
@@ -45,10 +46,14 @@ def generate_page(from_path, template_path, dest_path, basepath):
 
     # Step 5: Replace placeholders in the template
     final_html = template_content.replace("{{ Title }}", title).replace("{{ Content }}", html_body)
-
+    
+    # ✅ DEBUG: Print HTML before replacement
+    print("Before basepath replacement:")
+    print(final_html[:500])  # Show first 500 characters for preview
+    
     #Placeholders replacements for GitHub Pages basepath
-    final_html.replace('href="/', f'href="{basepath}')
-    final_html.replace('src="/', f'src="{basepath}')
+    final_html = final_html.replace('href="/', f'href="{basepath}')
+    final_html = final_html.replace('src="/', f'src="{basepath}')
 
 
     # Step 6: Ensure destination directories exist
