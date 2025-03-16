@@ -8,7 +8,7 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # Run the main script for local testing
 echo "🚀 Running site generator locally..."
-python3 src/main.py "/"
+python3 src/main.py
 
 # Start the local web server in the docs directory
 echo "🌐 Starting local server at http://localhost:8888"
