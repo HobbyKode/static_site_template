@@ -30,6 +30,9 @@ def generate_page(from_path, template_path, dest_path, basepath):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     print(f"Applying basepath: {basepath}")  # ✅ Debugging output
 
+    # ✅ Fix basepath formatting (Ensure single `/`)
+    basepath = basepath.rstrip("/")  # ✅ Remove trailing slash to prevent `//`
+
     # Step 1: Read the markdown file
     with open(from_path, "r", encoding="utf-8") as f:
         markdown_content = f.read()  # ✅ Read the actual content
@@ -47,16 +50,15 @@ def generate_page(from_path, template_path, dest_path, basepath):
     # Step 5: Replace placeholders in the template
     final_html = template_content.replace("{{ Title }}", title).replace("{{ Content }}", html_body)
     
-    # ✅ Fix basepath formatting (Ensure single `/`)
-    basepath = basepath.rstrip("/")  # ✅ Remove trailing slash to prevent `//`
+ 
 
     # ✅ DEBUG: Print HTML before replacement
     print("Before basepath replacement:")
     print(final_html[:500])  # Show first 500 characters for preview
     
     #Placeholders replacements for GitHub Pages basepath
-    final_html = final_html.replace('href="/', f'href="{basepath}')
-    final_html = final_html.replace('src="/', f'src="{basepath}')
+    final_html = final_html.replace('href="/', f'href="{basepath}/')
+    final_html = final_html.replace('src="/', f'src="{basepath}/')
 
 
     # Step 6: Ensure destination directories exist

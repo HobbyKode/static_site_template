@@ -6,8 +6,7 @@ from static_to_docs import copy_files_recursive
 
 # Get basepath as first CLI argument, default to "/"
 basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
-# Fix: Ensure basepath does not have an extra slash at the end
-basepath = basepath.rstrip("/")  # ✅ Remove trailing slash to prevent `//`
+
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
