@@ -15,7 +15,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 # Paths based on your project structure
-project_root = os.path.abspath(os.path.dirname(__file__), "..") #Correct Root path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) #Correct Root path
 dir_path_static = os.path.join(project_root, "static")  # Static assets
 dir_path_public = os.path.join(project_root, "public")  # Final output folder
 content_dir = os.path.join(project_root, "content")  # Markdown pages folder
