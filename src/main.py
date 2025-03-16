@@ -37,31 +37,15 @@ def main():
     print(f"CONTENT DIR: {content_dir}")
     print(f"BASEPATH: {basepath}")  # ✅ Debugging output
 
-    print("\n🚀 Deleting contents of the docs directory...\n")
+    print("Deleting public directory...")
     if os.path.exists(dir_path_docs):
-        for item in os.listdir(dir_path_docs):
-            item_path = os.path.join(dir_path_docs, item)
-            # Do NOT delete `src/`, `.gitignore`
-            if os.path.isdir(item_path) and item not in ["src"]:
-                shutil.rmtree(item_path)
-            elif os.path.isfile(item_path) and item not in [".gitignore"]:
-                os.remove(item_path)
+        shutil.rmtree(dir_path_docs)
 
-    print("\n✅ Copying static files to docs directory...\n")
+    print("Copying static files to public directory...")
     copy_files_recursive(dir_path_static, dir_path_docs)
 
-    print(f"\n📝 Using basepath: '{basepath}'\n")
-
-    # Generate HTML files from Markdown in content directory
-    print("\n📝 Generating HTML files from Markdown in content...\n")
-
-    if os.path.exists(content_dir):
-        generate_pages_recursive(content_dir, template_path, dir_path_docs, basepath) 
-        print(f"✅ Successfully generated all pages in {dir_path_docs}")
-    else:
-        print("❌ Error: No content directory found!")
-
-    print("\n✅ Done!~\n")
+    print("Generating content...")
+    generate_pages_recursive(content_dir, template_path, dir_path_docs, basepath)
 
 main()
 
