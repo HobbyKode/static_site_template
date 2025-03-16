@@ -34,14 +34,14 @@ def generate_page(from_path, template_path, dest_path, basepath):
         template = f.read()
 
     # Step 3: Convert markdown to HTML
-    html_body = markdown_to_html_node(markdown_content).to_html()
+    html = markdown_to_html_node(markdown_content).to_html()
 
     # Step 4: Extract the title correctly (fix the issue here)
     title = extract_title(markdown_content)  # ✅ Ensure this is a string, not a function
 
     # Step 5: Replace placeholders in the template
     template = template.replace("{{ Title }}", title)
-    template = template.replace("{{ Content }}", html_body)
+    template = template.replace("{{ Content }}", html)
     template = template.replace('href="/', 'href="' + basepath)
     template = template.replace('src="/', 'src="' + basepath)
 
