@@ -10,4 +10,4 @@ export PYTHONDONTWRITEBYTECODE=1
 
 #Building the site for GitHub Pages
 echo  "🚀 Building site for GitHub Pages with basepath:  /$REPO_NAME/"
-python3 public/src/main.py "/$REPO_NAME/" 
+python3 src/main.py "/$REPO_NAME/" 

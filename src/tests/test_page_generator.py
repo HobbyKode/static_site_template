@@ -1,6 +1,6 @@
 import unittest
 
-from public.src.page_generator import extract_title
+from src.page_generator import extract_title
 
 import sys
 sys.dont_write_bytecode = True  # Prevent __pycache__ creation

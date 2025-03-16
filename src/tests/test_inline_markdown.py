@@ -2,7 +2,7 @@ import sys
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
 import unittest
-from public.src.inline_markdown import (
+from src.inline_markdown import (
     split_nodes_delimiter,
     split_nodes_image,
     split_nodes_link,

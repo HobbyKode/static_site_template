@@ -3,8 +3,8 @@
 # Ensure we're in the correct project root
 cd "$(dirname "$0")"
 
-# Define the correct path to `main.py` inside `public/src/`
-main_script="./public/src/main.py"
+# Define the correct path to `main.py` inside `src/`
+main_script="./src/main.py"
 
 # Disable bytecode compilation (no __pycache__)
 export PYTHONDONTWRITEBYTECODE=1
