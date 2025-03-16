@@ -10,7 +10,7 @@ export PYTHONDONTWRITEBYTECODE=1
 echo "🚀 Running site generator locally..."
 python3 src/main.py "/"
 
-# Start the local web server in the public directory
+# Start the local web server in the docs directory
 echo "🌐 Starting local server at http://localhost:8888"
-cd public && python3 -m http.server 8888
+cd docs && python3 -m http.server 8888
 
