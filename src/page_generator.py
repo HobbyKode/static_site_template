@@ -30,7 +30,6 @@ def generate_page(from_path, template_path, dest_path, basepath):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     # Add this to your generate_page function right before you write the file
     print(f"DEBUG: Basepath is '{basepath}'")
-    print(f"DEBUG: Sample of final HTML: {final_html[:500]}")
 
 
     # Step 1: Read the markdown file
