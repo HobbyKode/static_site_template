@@ -4,18 +4,6 @@ import shutil
 from page_generator import generate_pages_recursive
 from static_to_docs import copy_files_recursive
 
-# Default basepath
-basepath = "/"
-
-# Check if arg was provided
-if len(sys.argv) > 1:
-    basepath = sys.argv[1]
-    print(f"Using basepath: {basepath}")
-
-# Normalize basepath (no trailing slash)
-basepath = basepath.rstrip("/")
-print(f"Normalized basepath: {basepath}")
-
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
@@ -26,12 +14,23 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # Paths based on your project structure
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) #Correct Root path
-dir_path_static = os.path.join(project_root, "static")  # Static assets
-dir_path_docs = os.path.join(project_root, "docs")  # Final output folder
-content_dir = os.path.join(project_root, "content")  # Markdown pages folder
-template_path = os.path.join(project_root, "template.html")  # HTML Template
+dir_path_static = os.path.join(project_root, "./static")  # Static assets
+dir_path_docs = os.path.join(project_root, "./docs")  # Final output folder
+content_dir = os.path.join(project_root, "./content")  # Markdown pages folder
+template_path = os.path.join(project_root, "./template.html")  # HTML Template
+# Default basepath
+default_basepath = "/"
+
+
 
 def main():
+    basepath = default_basepath
+    # Check if arg was provided
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+        print(f"Using basepath: {basepath}")
+
+
     print(f"\nSCRIPT DIR: {os.path.dirname(os.path.abspath(__file__))}")
     print(f"STATIC DIR: {dir_path_static}")
     print(f"DOCS DIR: {dir_path_docs}")
