@@ -11,5 +11,5 @@ REPO_NAME="static_site_template"
 BASEPATH="/$REPO_NAME"
 BASEPATH=${BASEPATH%/}  # ✅ Removes trailing slash if it exists
 
-echo "🚀 Building site for GitHub Pages with basepath: $BASEPATH"
+echo "🚀 Building site for GitHub Pages with basepath: '$BASEPATH'"
 python3 src/main.py "$BASEPATH"
