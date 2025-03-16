@@ -41,6 +41,8 @@ def main():
     print("\n✅ Copying static files to docs directory...\n")
     copy_files_recursive(dir_path_static, dir_path_docs)
 
+    print(f"\n📝 Using basepath: {basepath}\n")
+
     # Generate HTML files from Markdown in content directory
     print("\n📝 Generating HTML files from Markdown in content...\n")
 
