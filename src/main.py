@@ -13,11 +13,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 # Paths based on your project structure
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) #Correct Root path
-dir_path_static = os.path.join(project_root, "./static")  # Static assets
-dir_path_docs = os.path.join(project_root, "./docs")  # Final output folder
-content_dir = os.path.join(project_root, "./content")  # Markdown pages folder
-template_path = os.path.join(project_root, "./template.html")  # HTML Template
+dir_path_static  = "./static"  # Static assets
+dir_path_docs = "./docs"  # Final output folder
+content_dir = "./content"  # Markdown pages folder
+template_path = "./template.html"  # HTML Template
 # Default basepath
 default_basepath = "/"
 
