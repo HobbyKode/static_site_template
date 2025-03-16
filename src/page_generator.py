@@ -26,6 +26,9 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, bas
 
 
 def generate_page(from_path, template_path, dest_path, basepath):
+    # Add this to your generate_page function right before you write the file
+    print(f"DEBUG: Basepath is '{basepath}'")
+    print(f"DEBUG: Sample of final HTML: {final_html[:500]}")
     """Generates an HTML page from a markdown file using a template."""
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
     print(f"Applying basepath: {basepath}")  # ✅ Debugging output
