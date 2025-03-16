@@ -2,14 +2,14 @@ import sys
 import os
 import shutil
 from page_generator import generate_pages_recursive
-from static_to_public import copy_files_recursive
+from static_to_docs import copy_files_recursive
 
 # Get basepath as first CLI argument, default to "/"
 basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
 
-# Ensure Python can find `static_to_public.py`
+# Ensure Python can find `static_to_docs.py`
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
