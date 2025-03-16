@@ -8,6 +8,6 @@ REPO_NAME="static_site_template"
 export PYTHONDONTWRITEBYTECODE=1
 
 # Building the site for GitHub Pages
-BASEPATH="/$REPO_NAME"  # ✅ Remove trailing slash
+BASEPATH= "$REPO_NAME"  # ✅ Remove trailing slash
 echo "🚀 Building site for GitHub Pages with basepath: $BASEPATH"
 python3 src/main.py "$BASEPATH"
