@@ -57,8 +57,11 @@ def generate_page(from_path, template_path, dest_path, basepath):
     print(final_html[:500])  # Show first 500 characters for preview
     
     #Placeholders replacements for GitHub Pages basepath
-    final_html = final_html.replace('href="/', f'href="{basepath}/')
-    final_html = final_html.replace('src="/', f'src="{basepath}/')
+    if basepath and basepath != "/":
+        # Only do the replacement if we have a non-root basepath
+        basepath_no_trailing = basepath.rstrip("/")
+        final_html = final_html.replace('href="/', f'href="{basepath_no_trailing}/')
+        final_html = final_html.replace('src="/', f'src="{basepath_no_trailing}/')
 
     # Add right after your replacements
     print(f"DEBUG: Example link after replacement: {final_html.find('href=')}")
