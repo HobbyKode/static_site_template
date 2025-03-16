@@ -4,8 +4,17 @@ import shutil
 from page_generator import generate_pages_recursive
 from static_to_docs import copy_files_recursive
 
-# Get basepath as first CLI argument, default to "/"
-basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
+# Default basepath
+basepath = "/"
+
+# Check if arg was provided
+if len(sys.argv) > 1:
+    basepath = sys.argv[1]
+    print(f"Using basepath: {basepath}")
+
+# Normalize basepath (no trailing slash)
+basepath = basepath.rstrip("/")
+print(f"Normalized basepath: {basepath}")
 
 
 sys.dont_write_bytecode = True  # Prevents __pycache__ creation
