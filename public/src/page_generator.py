@@ -46,6 +46,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
     # Step 5: Replace placeholders in the template
     final_html = template_content.replace("{{ Title }}", title).replace("{{ Content }}", html_body)
 
+    #Placeholders replacements for GitHub Pages basepath
     final_html.replace('href="/', f'href="{basepath}')
     final_html.replace('src="/', f'src="{basepath}')
 
